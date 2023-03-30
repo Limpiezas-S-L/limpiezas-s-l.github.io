@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Felicitación de Cumpleaños</title>
+	<style>
+		body {
+			background-color: #ffdab9;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			color: #FF69B4;
+			font-size: 72px;
+			text-align: center;
+			margin-top: 50px;
+		}
+		h2 {
+			color: #4B0082;
+			font-size: 48px;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		#confetti {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			pointer-events: none;
+		}
+		#confetti canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<audio controls autoplay loop>
+		<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+		Tu navegador no soporta el elemento de audio.
+	</audio>
+	<h1>FELICIDADES ORIGENES</h1>
+	<div id="confetti"></div>
+	<img src="https://cdn.discordapp.com/attachments/713449380476223539/1091097906553032845/1667255813160.png" alt="Foto del Cumpleañero" style="display: block; margin: 0 auto;">
+	
+	<h2>LIMPIEZAS S.L. TE DESEA LO MEJOR</h2>
+	<script>
+		var confettiSettings = {
+			colors: ['#FF69B4', '#4B0082', '#00BFFF', '#FFD700'],
+			duration: 1000,
+			fadeOut: true,
+			max: 900,
+			size: 150,
+			speed: 10,
+			rotate: true,
+			gravity: 1,
+			shapes: ['square', 'circle'],
+			zIndex: 9999
+		};
+
+		function createConfetti() {
+			var confetti = document.createElement('div');
+			confetti.classList.add('confetti');
+			confetti.style.backgroundColor = confettiSettings.colors[Math.floor(Math.random() * confettiSettings.colors.length)];
+			confetti.style.width = confettiSettings.size + 'px';
+			confetti.style.height = confettiSettings.size + 'px';
+			confetti.style.position = 'absolute';
+			confetti.style.left = Math.random() * window.innerWidth + 'px';
+			confetti.style.top = Math.random() * window.innerHeight + 'px';
+			confetti.style.animation = 'confetti ' + confettiSettings.duration / 1000 + 's ease-out';
+if (confettiSettings.rotate) {
+confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+}
+document.getElementById('confetti').appendChild(confetti);
+setTimeout(function() {
+confetti.remove();
+}, confettiSettings.duration + 100);
+}
+setInterval(createConfetti, 100);
+</script>
+</body>
+</html>
