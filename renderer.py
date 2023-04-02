@@ -1,15 +1,15 @@
 import jinja2
 import json
 from datetime import datetime, date
-from os import listdir, getenv
+from os import listdir, getenv, makedirs, path
 from random import choice
 
 # Configuration
 
 template_folder = getenv("TEMPLATE_FOLDER", "templates")
 template_default = getenv("TEMPLATE_DAFAULT", "default.html")
-template_output = getenv("TEMPLATE_OUTPUT", "index.html")
-data_file = getenv("DATA_FILE", "data.json")
+template_output = getenv("TEMPLATE_OUTPUT", "public/index.html")
+data_file = getenv("DATA_FILE", "foo.json")
 
 # Find if there is any birthday today
 
@@ -37,6 +37,9 @@ if member:
     template_list.remove(template_default)
 
     template = choice(template_list)
+
+# Make sure the output folder exists
+makedirs(path.dirname(template_output), exist_ok=True)
 
 with open(template_output, "w") as f:
     f.write(environment.get_template(template).render(member))
