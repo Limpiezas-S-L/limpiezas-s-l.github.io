@@ -9,7 +9,7 @@ from random import choice
 template_folder = getenv("TEMPLATE_FOLDER", "templates")
 template_default = getenv("TEMPLATE_DAFAULT", "default.html")
 template_output = getenv("TEMPLATE_OUTPUT", "public/index.html")
-data_file = getenv("DATA_FILE", "foo.json")
+data_file = getenv("DATA_FILE", "data.json")
 
 # Find if there is any birthday today
 
